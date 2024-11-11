@@ -4,20 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manas Grāmatu Piezīmes</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
         <h1>Manas Grāmatu Piezīmes</h1>
     </header>
-    <div class="book-entry">
-        <input type="text" placeholder="Grāmatas attēla URL" id="imgUrl">
-        <input type="text" placeholder="Grāmatas nosaukums" id="bookTitle">
-        <textarea placeholder="Ko es iemācījos" id="bookNotes"></textarea>
-        <button onclick="addBook()">Pievienot grāmatu</button>
+
+    <div id="bookList" class="book-grid">
+        <!-- Book 1 -->
+        <div class="book-item">
+            <img src="https://example.com/book1.jpg" alt="Grāmata 1">
+            <h3>Grāmata 1</h3>
+            <p>Šī ir pirmās grāmatas apraksts. Tas ir ļoti interesants un izglītojošs.</p>
+        </div>
+        
+        <!-- Book 2 -->
+        <div class="book-item">
+            <img src="https://example.com/book2.jpg" alt="Grāmata 2">
+            <h3>Grāmata 2</h3>
+            <p>Šī ir otrās grāmatas apraksts. Šī grāmata piedāvā dziļas pārdomas par dzīvi.</p>
+        </div>
+        
+        <!-- Book 3 -->
+        <div class="book-item">
+            <img src="https://example.com/book3.jpg" alt="Grāmata 3">
+            <h3>Grāmata 3</h3>
+            <p>Trešā grāmata piedāvā daudz vērtīgu mācību par efektīvu laika pārvaldību.Trešā grāmata piedāvā daudz vērtīgu mācību par efektīvu laika pārvaldībuTrešā grāmata piedāvā daudz vērtīgu mācību par efektīvu laika pārvaldībuTrešā grāmata piedāvā daudz vērtīgu mācību par efektīvu laika pārvaldībuTrešā grāmata piedāvā daudz vērtīgu mācību par efektīvu laika pārvaldībuTrešā grāmata piedāvā daudz vērtīgu mācību par efektīvu laika pārvaldību</p>
+        </div>
+        
+        <!-- More books can be added here in similar structure -->
     </div>
-    <div id="bookList" class="book-grid"></div>
-    
-    <script src="js/script.js"></script>
+
+    <script src="script.js"></script>
 </body>
 </html>
+
