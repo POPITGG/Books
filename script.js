@@ -1,24 +1,41 @@
-document.addEventListener("DOMContentLoaded", loadBooks);
+document.addEventListener("DOMContentLoaded", () => {
+    const addBookButton = document.querySelector("button");
+    addBookButton.addEventListener("click", addBook);
+});
 
 function addBook() {
     const imgUrl = document.getElementById("imgUrl").value;
     const bookTitle = document.getElementById("bookTitle").value;
     const bookNotes = document.getElementById("bookNotes").value;
 
+    if (!imgUrl || !bookTitle || !bookNotes) {
+        alert("Lūdzu, aizpildiet visus laukus!");
+        return;
+    }
+
     const bookList = document.getElementById("bookList");
 
     // Create book item container
+    const bookItem = createBookItem(imgUrl, bookTitle, bookNotes);
+
+    // Append to book list
+    bookList.appendChild(bookItem);
+
+    // Clear input fields
+    document.getElementById("imgUrl").value = '';
+    document.getElementById("bookTitle").value = '';
+    document.getElementById("bookNotes").value = '';
+}
+
+function createBookItem(imgUrl, bookTitle, bookNotes) {
     const bookItem = document.createElement("div");
     bookItem.classList.add("book-item");
 
-    // Create delete button
+    // Create and append the delete button
     const deleteBtn = document.createElement("button");
     deleteBtn.classList.add("delete-btn");
     deleteBtn.innerText = "X";
-    deleteBtn.onclick = function() {
-        bookList.removeChild(bookItem);
-        removeBookFromLocal(bookTitle);  // Remove from local storage
-    };
+    deleteBtn.onclick = () => bookItem.remove();
     bookItem.appendChild(deleteBtn);
 
     // Add book image
@@ -36,59 +53,5 @@ function addBook() {
     notes.innerText = bookNotes;
     bookItem.appendChild(notes);
 
-    // Append to book list
-    bookList.appendChild(bookItem);
-
-    // Save to local storage
-    saveBookToLocal({ imgUrl, bookTitle, bookNotes });
-
-    // Clear input fields
-    document.getElementById("imgUrl").value = '';
-    document.getElementById("bookTitle").value = '';
-    document.getElementById("bookNotes").value = '';
-}
-
-function saveBookToLocal(book) {
-    let books = JSON.parse(localStorage.getItem("books")) || [];
-    books.push(book);
-    localStorage.setItem("books", JSON.stringify(books));
-}
-
-function loadBooks() {
-    const books = JSON.parse(localStorage.getItem("books")) || [];
-    const bookList = document.getElementById("bookList");
-
-    books.forEach((book) => {
-        const bookItem = document.createElement("div");
-        bookItem.classList.add("book-item");
-
-        const deleteBtn = document.createElement("button");
-        deleteBtn.classList.add("delete-btn");
-        deleteBtn.innerText = "X";
-        deleteBtn.onclick = function() {
-            bookList.removeChild(bookItem);
-            removeBookFromLocal(book.bookTitle);
-        };
-        bookItem.appendChild(deleteBtn);
-
-        const bookImg = document.createElement("img");
-        bookImg.src = book.imgUrl;
-        bookItem.appendChild(bookImg);
-
-        const title = document.createElement("h3");
-        title.innerText = book.bookTitle;
-        bookItem.appendChild(title);
-
-        const notes = document.createElement("p");
-        notes.innerText = book.bookNotes;
-        bookItem.appendChild(notes);
-
-        bookList.appendChild(bookItem);
-    });
-}
-
-function removeBookFromLocal(bookTitle) {
-    let books = JSON.parse(localStorage.getItem("books")) || [];
-    books = books.filter(book => book.bookTitle !== bookTitle);
-    localStorage.setItem("books", JSON.stringify(books));
+    return bookItem;
 }
