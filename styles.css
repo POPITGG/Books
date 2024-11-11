@@ -1,0 +1,118 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7fa;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header h1 {
+    font-size: 2rem;
+    color: #5a67d8;
+    margin-bottom: 20px;
+}
+
+.book-entry {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.book-entry input, .book-entry textarea, .book-entry button {
+    width: 90%;
+    max-width: 350px;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.book-entry button {
+    background-color: #5a67d8;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.book-entry button:hover {
+    background-color: #4c51bf;
+}
+
+.book-entry textarea {
+    resize: none;
+}
+
+.book-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    width: 100%;
+    max-width: 1000px;
+    margin-top: 20px;
+}
+
+.book-item {
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.book-item img {
+    max-width: 100%;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.book-item h3 {
+    color: #333;
+    font-size: 1.2rem;
+    margin: 10px 0;
+}
+
+.book-item p {
+    color: #555;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.book-item {
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+}
+
+.book-item .delete-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.book-item .delete-btn:hover {
+    background-color: #ff4c4c;
+}

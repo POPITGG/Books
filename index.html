@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manas Grāmatu Piezīmes</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Manas Grāmatu Piezīmes</h1>
+    </header>
+    <div class="book-entry">
+        <input type="text" placeholder="Grāmatas attēla URL" id="imgUrl">
+        <input type="text" placeholder="Grāmatas nosaukums" id="bookTitle">
+        <textarea placeholder="Ko es iemācījos" id="bookNotes"></textarea>
+        <button onclick="addBook()">Pievienot grāmatu</button>
+    </div>
+    <div id="bookList" class="book-grid"></div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
