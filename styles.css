@@ -32,7 +32,9 @@ header h1 {
 }
 
 .book-item img {
-    max-width: 100%;
+    width: 200px; /* Set the desired fixed width */
+    height: 300px; /* Set the desired fixed height */
+    object-fit: cover; /* Ensures the image covers the area without distortion */
     border-radius: 5px;
     margin-bottom: 15px;
 }
