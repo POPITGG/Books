@@ -1,4 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
+    // Add numbering to existing books on page load
+    updateBookNumbers();
+
     const addBookButton = document.querySelector("button");
     addBookButton.addEventListener("click", addBook);
 });
@@ -21,6 +24,9 @@ function addBook() {
     // Append to book list
     bookList.appendChild(bookItem);
 
+    // Update numbers for all books
+    updateBookNumbers();
+
     // Clear input fields
     document.getElementById("imgUrl").value = '';
     document.getElementById("bookTitle").value = '';
@@ -35,7 +41,10 @@ function createBookItem(imgUrl, bookTitle, bookNotes) {
     const deleteBtn = document.createElement("button");
     deleteBtn.classList.add("delete-btn");
     deleteBtn.innerText = "X";
-    deleteBtn.onclick = () => bookItem.remove();
+    deleteBtn.onclick = () => {
+        bookItem.remove();
+        updateBookNumbers(); // Recalculate numbers after deletion
+    };
     bookItem.appendChild(deleteBtn);
 
     // Add book image
@@ -45,7 +54,7 @@ function createBookItem(imgUrl, bookTitle, bookNotes) {
 
     // Add book title
     const title = document.createElement("h3");
-    title.innerText = bookTitle;
+    title.innerText = bookTitle; // Initial title (number will be added later)
     bookItem.appendChild(title);
 
     // Add book notes
@@ -54,4 +63,14 @@ function createBookItem(imgUrl, bookTitle, bookNotes) {
     bookItem.appendChild(notes);
 
     return bookItem;
+}
+
+// Function to update book numbers dynamically
+function updateBookNumbers() {
+    const bookItems = document.querySelectorAll(".book-item");
+    bookItems.forEach((item, index) => {
+        const titleElement = item.querySelector("h3");
+        const originalTitle = titleElement.innerText.replace(/\(\d+\)$/, ""); // Remove existing number if any
+        titleElement.innerText = `${originalTitle} (${index + 1})`; // Add new number
+    });
 }
